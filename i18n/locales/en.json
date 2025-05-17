@@ -1,0 +1,9 @@
+{
+    "menu": {
+        "home": "Home",
+        "inventory": "Inventory",
+        "products": "Products",
+        "stock": "Stock",
+        "settings": "Settings"
+    }
+}
