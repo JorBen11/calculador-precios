@@ -1,28 +1,21 @@
+import { useMaterialStore } from '@/store/materialStore';
+import { Material } from '@/types/material';
 import { formatDate } from '@/utils/fecha';
-import { useState } from 'react';
+import { useRouter } from 'expo-router';
 import { FlatList, StyleSheet } from 'react-native';
 import { Card, FAB, IconButton } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
-interface Material {
-  id: string;
-  name: string;
-  quantity: number;
-  unidadMedida: string;
-  price: number;
-  fechaCompra: Date;
-}
 
 const CardMaterial = ({ item }: { item: Material }) => {
   return (
     <Card style={styles.card}>
       <Card.Title 
         title={item.name}
-        subtitle={`${item.quantity} ${item.unidadMedida} - $${item.price} - ${formatDate(item.fechaCompra)}`} 
+        subtitle={`${item.quantity} ${item.unit} - $${item.purchasePrice} - ${formatDate(item.dateAdded)}`} 
         right={() => (
           <Card.Actions>
-            <IconButton icon="pencil"/>
-            <IconButton icon="delete" />
+            <IconButton icon="pencil" onPress={() => console.log('Pressed')}/>
+            <IconButton icon="delete" onPress={() => console.log('Pressed')}/>
           </Card.Actions>
         )}
       />
@@ -31,21 +24,19 @@ const CardMaterial = ({ item }: { item: Material }) => {
 }
 const InventoryScreen = () => {
 
-  const [data, setData] = useState<Material[]>([
-    { id: '1', name: 'Material 1', quantity: 10, unidadMedida: 'kg', price: 100.21, fechaCompra: new Date() },
-    { id: '2', name: 'Material 2', quantity: 20, unidadMedida: 'kg', price: 200, fechaCompra: new Date() },
-  ]);
+  const {materials} = useMaterialStore();
+  const router = useRouter();
 
   return (
     <SafeAreaView style={styles.container}>
       <FlatList 
-        data={data}
+        data={materials}
         keyExtractor={(item) => item.id}
         renderItem={CardMaterial}
       />
       <FAB 
         style={styles.fab}
-        onPress={() => console.log('Pressed')}
+        onPress={() => router.push('/inventory/MaterialForm')}
         icon="plus"
       />
     </SafeAreaView>

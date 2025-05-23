@@ -22,7 +22,8 @@ const MAPPING = {
   'plus.circle.fill': 'assignment-add',
   'bag.fill': 'shopping-bag',
   'gear': 'settings',
-  'cube.box': 'inventory-2'
+  'cube.box': 'inventory-2',
+  'chevron.left': 'chevron-left',
 } as IconMapping;
 
 /**
