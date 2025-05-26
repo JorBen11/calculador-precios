@@ -5,5 +5,21 @@
         "products": "Productos",
         "stock": "Stock",
         "settings": "Ajustes"
+    },
+    "material": {
+        "name": "Nombre",
+        "description": "Descripción",
+        "optional": "opcional",
+        "quantity": "Cantidad",
+        "unit": "Unidad",
+        "search": "Buscar...",
+        "purchase_price": "Precio de compra",
+        "purchase_quantity": "Cantidad por compra",
+        "save": "Guardar",
+        "update": "Actualizar",
+        "add_title": "Agrega un Material",
+        "update_title": "Actualiza {{name}}",
+        "saved_success": "Material guardado correctamente",
+        "save_error": "Ocurrió un error al guardar el material"
     }
 }

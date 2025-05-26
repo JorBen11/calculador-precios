@@ -5,6 +5,7 @@ import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { adaptNavigationTheme, PaperProvider } from 'react-native-paper';
 import 'react-native-reanimated';
+import Toast from 'react-native-toast-message';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { darkTheme, lightTheme } from '@/theme/theme';
@@ -30,17 +31,20 @@ export default function RootLayout() {
   });
 
   return (
-    <SafeAreaProvider>
-      <PaperProvider theme={theme}>
-        <ThemeProvider value={isDark ? DarkTheme : LightTheme}>
-          <Stack>
-            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-            <Stack.Screen name="inventory/MaterialForm" options={{ title: 'Agregar material' }} />
-            <Stack.Screen name="+not-found" />
-          </Stack>
-          <StatusBar style="auto" />
-        </ThemeProvider>
-      </PaperProvider>
-    </SafeAreaProvider>
+    <>
+      <SafeAreaProvider>
+        <PaperProvider theme={theme}>
+          <ThemeProvider value={isDark ? DarkTheme : LightTheme}>
+            <Stack>
+              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+              <Stack.Screen name="inventory/MaterialForm" options={{ title: 'Agregar material' }} />
+              <Stack.Screen name="+not-found" />
+            </Stack>
+            <StatusBar style="auto" />
+          </ThemeProvider>
+        </PaperProvider>
+      </SafeAreaProvider>
+      <Toast />
+    </>
   );
 }

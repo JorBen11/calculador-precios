@@ -1,12 +1,12 @@
 import { useMaterialStore } from '@/store/materialStore';
 import { Material } from '@/types/material';
 import { formatDate } from '@/utils/fecha';
-import { useRouter } from 'expo-router';
+import { Router, useRouter } from 'expo-router';
 import { FlatList, StyleSheet } from 'react-native';
 import { Card, FAB, IconButton } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-const CardMaterial = ({ item }: { item: Material }) => {
+const CardMaterial = ({ item, router }: { item: Material, router: Router }) => {
   return (
     <Card style={styles.card}>
       <Card.Title 
@@ -14,8 +14,14 @@ const CardMaterial = ({ item }: { item: Material }) => {
         subtitle={`${item.quantity} ${item.unit} - $${item.purchasePrice} - ${formatDate(item.dateAdded)}`} 
         right={() => (
           <Card.Actions>
-            <IconButton icon="pencil" onPress={() => console.log('Pressed')}/>
-            <IconButton icon="delete" onPress={() => console.log('Pressed')}/>
+            <IconButton 
+              icon="pencil" 
+              onPress={() => {
+                useMaterialStore.setState({ selectedMaterial: item });
+                router.navigate('/(tabs)/inventory/MaterialForm');
+              }}
+            />
+            <IconButton icon="delete" onPress={() => useMaterialStore.getState().deleteMaterial(item.id)}/>
           </Card.Actions>
         )}
       />
@@ -32,11 +38,11 @@ const InventoryScreen = () => {
       <FlatList 
         data={materials}
         keyExtractor={(item) => item.id}
-        renderItem={CardMaterial}
+        renderItem={item => CardMaterial({item: item.item, router})}
       />
       <FAB 
         style={styles.fab}
-        onPress={() => router.push('/inventory/MaterialForm')}
+        onPress={() => router.push('/(tabs)/inventory/MaterialForm')}
         icon="plus"
       />
     </SafeAreaView>

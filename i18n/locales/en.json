@@ -5,5 +5,21 @@
         "products": "Products",
         "stock": "Stock",
         "settings": "Settings"
+    },
+    "material": {
+        "name": "Name",
+        "description": "Description",
+        "optional": "optional",
+        "quantity": "Quantity",
+        "unit": "Unit",
+        "search": "Search...",
+        "purchase_price": "Purchase Price",
+        "purchase_quantity": "Purchase Quantity",
+        "save": "Save",
+        "update": "Update",
+        "add_title": "Add Material",
+        "update_title": "Update {{name}}",
+        "saved_success": "Material saved successfully",
+        "save_error": "An error occurred while saving the material"
     }
 }
