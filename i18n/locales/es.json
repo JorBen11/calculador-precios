@@ -1,25 +1,38 @@
 {
     "menu": {
         "home": "Inicio",
-        "inventory": "Inventario",
+        "inventory": "Materiales",
         "products": "Productos",
-        "stock": "Stock",
-        "settings": "Ajustes"
+        "stock": "Existencias",
+        "settings": "Configuración"
     },
     "material": {
         "name": "Nombre",
         "description": "Descripción",
         "optional": "opcional",
-        "quantity": "Cantidad",
-        "unit": "Unidad",
+        "quantity": "Cantidad por unidad comprada",
+        "quantity_help": "Ej: si cada bolsa de harina tiene 500 gramos, escribe 500.",
+        "purchase_quantity": "Unidades compradas",
+        "purchase_quantity_help": "Ej: si compraste 2 bolsas, escribe 2.",
+        "unit": "Unidad de medida",
+        "unit_help": "Ej: gramos, mililitros, unidades, etc.",
+        "purchase_price": "Precio total pagado",
+        "purchase_price_help": "Precio que pagaste en total por todas las unidades.",
         "search": "Buscar...",
-        "purchase_price": "Precio de compra",
-        "purchase_quantity": "Cantidad por compra",
         "save": "Guardar",
         "update": "Actualizar",
-        "add_title": "Agrega un Material",
+        "add_title": "Agrega un material",
         "update_title": "Actualiza {{name}}",
         "saved_success": "Material guardado correctamente",
         "save_error": "Ocurrió un error al guardar el material"
+    },
+    "errors": {
+        "number_required": "El valor de {{name}} debe ser mayor que 0",
+        "required": "{{name}} es obligatorio",
+        "select_required": "Debe seleccionar una opción para {{name}}"
+    },
+    "labels": {
+        "date_added": "Fecha de ingreso",
+        "low_stock": "Pocas existencias"
     }
 }

@@ -1,7 +1,7 @@
 {
     "menu": {
         "home": "Home",
-        "inventory": "Inventory",
+        "inventory": "Materials",
         "products": "Products",
         "stock": "Stock",
         "settings": "Settings"
@@ -10,16 +10,29 @@
         "name": "Name",
         "description": "Description",
         "optional": "optional",
-        "quantity": "Quantity",
-        "unit": "Unit",
+        "quantity": "Quantity per unit purchased",
+        "quantity_help": "E.g., if each bag of flour has 500 grams, enter 500.",
+        "purchase_quantity": "Units purchased",
+        "purchase_quantity_help": "E.g., if you bought 2 bags, enter 2.",
+        "unit": "Unit of measurement",
+        "unit_help": "E.g., grams, milliliters, units, etc.",
+        "purchase_price": "Total amount paid",
+        "purchase_price_help": "Total price you paid for all units.",
         "search": "Search...",
-        "purchase_price": "Purchase Price",
-        "purchase_quantity": "Purchase Quantity",
         "save": "Save",
         "update": "Update",
         "add_title": "Add Material",
         "update_title": "Update {{name}}",
         "saved_success": "Material saved successfully",
         "save_error": "An error occurred while saving the material"
+    },
+    "errors": {
+        "number_required": "{{name}} must be greater than 0",
+        "required": "{{name}} is required",
+        "select_required": "You must select a {{name}}"
+    },
+    "labels": {
+        "date_added": "Date Added",
+        "low_stock": "Low Stock"
     }
 }

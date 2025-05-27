@@ -29,18 +29,18 @@ const AppHeader = ({ title, onBack, leftButton, rightButton }: AppHeaderProps) =
   return (
     <View style={[styles.container, { borderBottomColor: theme.colors.outline }]}>
       <View style={styles.side}>
-        {onBack || canGoBack() ? (
-          <TouchableOpacity
-            onPress={handleBack}
-            accessibilityRole="button"
-            accessibilityLabel="Volver atrás"
-            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-            style={{ borderRadius: 20, backgroundColor: theme.colors.surface, padding: 8 }}
-          >
-            <IconSymbol name="chevron.left" size={ICON_SIZE} color={theme.colors.primary} />
-          </TouchableOpacity>
-        ) : (
-          leftButton ?? <View style={{ width: ICON_SIZE }} />
+        {leftButton ?? (
+          (onBack || canGoBack()) && (
+            <TouchableOpacity
+              onPress={handleBack}
+              accessibilityRole="button"
+              accessibilityLabel="Volver atrás"
+              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+              style={{ borderRadius: 20, backgroundColor: theme.colors.surface, padding: 8 }}
+            >
+              <IconSymbol name="chevron.left" size={ICON_SIZE} color={theme.colors.primary} />
+            </TouchableOpacity>
+          )
         )}
       </View>
 

@@ -1,5 +1,5 @@
 import AppHeader from '@/components/AppHeader';
-import { materialSchema } from '@/schema/materialSchema';
+import { getMaterialSchema } from '@/schema/materialSchema';
 import { useMaterialStore } from '@/store/materialStore';
 import { Material, MaterialSchemaType } from '@/types/material';
 import { onlyNumbers, sanitizeLocalizedDecimalInput } from '@/utils/number';
@@ -24,7 +24,8 @@ const unitOptions = [
 ];
 
 const MaterialForm = () => {
-  const { t } = useTranslation(); 
+  const { t } = useTranslation();
+  const materialSchema = getMaterialSchema(t);
   const { selectedMaterial: initialData, clearSelectedMaterial, addMaterial, updateMaterial } = useMaterialStore();
   const submitLabel = initialData ? t('material.update') : t('material.save');
   const title = initialData ? t('material.update_title', { name: initialData.name }) : t('material.add_title');
@@ -143,9 +144,11 @@ const MaterialForm = () => {
                     left={<TextInput.Icon icon="scale" />}
                     error={!!errors.quantity}
                   />
-                  {!!errors.quantity && (
-                    <HelperText type="error"> {errors.quantity?.message} </HelperText>
-                  )}
+                  {!!errors.quantity ? 
+                    (<HelperText type="error"> {errors.quantity?.message} </HelperText>):
+                    (<HelperText type="info">{t('material.quantity_help')}</HelperText>)
+                  }
+                  
                 </View>
               )}
             />
@@ -200,9 +203,10 @@ const MaterialForm = () => {
                     left={<TextInput.Icon icon="currency-usd" />}
                     error={!!errors.purchasePrice}
                   />
-                  {!!errors.purchasePrice && (
-                    <HelperText type="error"> {errors.purchasePrice?.message} </HelperText>
-                  )}
+                  {!!errors.purchasePrice ? 
+                    (<HelperText type="error"> {errors.purchasePrice?.message} </HelperText>) : 
+                    (<HelperText type="info">{t('material.purchase_price_help')}</HelperText>)
+                  }
                 </View>
               )}
             />
@@ -222,9 +226,11 @@ const MaterialForm = () => {
                     left={<TextInput.Icon icon="package-variant" />}
                     error={!!errors.purchaseQuantity}
                   />
-                  {!!errors.purchaseQuantity && (
-                    <HelperText type="error"> {errors.purchaseQuantity?.message} </HelperText>
-                  )}
+                  {!!errors.purchaseQuantity ? 
+                    (<HelperText type="error"> {errors.purchaseQuantity?.message} </HelperText>) :
+                    (<HelperText type="info">{t('material.purchase_quantity_help')}</HelperText>)
+                  }
+                  
                 </View>
               )}
             />
