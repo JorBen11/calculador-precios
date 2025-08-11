@@ -21,7 +21,7 @@ const CardMaterial = ({ item, router, t }: { item: Material, router: Router, t: 
               icon="pencil" 
               onPress={() => {
                 useMaterialStore.setState({ selectedMaterial: item });
-                router.navigate('/(tabs)/inventory/MaterialForm');
+                router.navigate('/inventory/MaterialForm');
               }}
             />
             <IconButton icon="delete" onPress={() => useMaterialStore.getState().deleteMaterial(item.id)}/>

@@ -8,13 +8,15 @@ import 'react-native-reanimated';
 import Toast from 'react-native-toast-message';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { useSettingsStore } from '@/store/settingsStore';
 import { darkTheme, lightTheme } from '@/theme/theme';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 void i18n;
 
 export default function RootLayout() {
+  const { theme: themeSettings } = useSettingsStore();
   const colorScheme = useColorScheme();
-  const isDark = colorScheme === 'dark';
+  const isDark = themeSettings === 'dark' || (themeSettings === 'system' && colorScheme === 'dark');
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
   });

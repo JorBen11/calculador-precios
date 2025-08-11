@@ -26,6 +26,19 @@
         "saved_success": "Material guardado correctamente",
         "save_error": "Ocurrió un error al guardar el material"
     },
+    "settings": {
+        "theme": "Tema",
+        "language": "Idioma",
+        "language_help": "Selecciona el idioma de la aplicación.",
+        "theme_help": "Selecciona el tema de la aplicación.",
+        "dark": "Oscuro",
+        "light": "Claro",
+        "system": "Predeterminado del sistema"
+    },
+    "language": {
+        "en": "Inglés",
+        "es": "Español"
+    },
     "errors": {
         "number_required": "El valor de {{name}} debe ser mayor que 0",
         "required": "{{name}} es obligatorio",
