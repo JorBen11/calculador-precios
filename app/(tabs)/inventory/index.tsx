@@ -1,6 +1,10 @@
 import AppHeader from '@/components/AppHeader';
+import SortComponent from '@/components/SortComponent';
+import SortIndicator from '@/components/SortIndicator';
+import { useSorting } from '@/hooks/useSorting';
 import { useMaterialStore } from '@/store/materialStore';
 import { Material } from '@/types/material';
+import { SortConfig } from '@/types/sort';
 import { formatDate } from '@/utils/fecha';
 import { Router, useRouter } from 'expo-router';
 import { TFunction } from 'i18next';
@@ -41,13 +45,29 @@ const InventoryScreen = () => {
   const router = useRouter();
   const {t} = useTranslation();
 
+  const sortConfig: SortConfig<Material> = {
+    fields: [
+      { key: 'name', label: t('material.name', { defaultValue: 'Nombre' }), icon: 'textformat.abc' },
+      { key: 'quantity', label: t('material.quantity', { defaultValue: 'Cantidad' }), icon: 'number' },
+      { key: 'dateAdded', label: t('labels.date_added', { defaultValue: 'Fecha' }), icon: 'calendar', getValue: (item) => new Date(item.dateAdded)  }
+    ],
+    defaultSort: { field: 'dateAdded', order: 'desc' }
+  }
+
+  const {openSortModal, closeSortModal, sortedData: sortedMaterials, currentSort, sortModalVisible, handleSortChange} = useSorting<Material>(materials, sortConfig);
+
   return (
     <SafeAreaView style={styles.container}>
-      <AppHeader title={t('menu.inventory')} leftButton={<IconButton icon="sort" onPress={() => router.back()}/>}/>
+      <AppHeader title={t('menu.inventory')} leftButton={<></>}/>
+      <SortIndicator currentSort={currentSort} itemCount={materials.length} openSortModal={openSortModal}/>
       <FlatList 
-        data={materials}
+        data={sortedMaterials}
         keyExtractor={(item) => item.id}
         renderItem={item => CardMaterial({item: item.item, router, t})}
+      />
+      <SortComponent
+        config={sortConfig} title={t('sort.materials_title', { defaultValue: 'Ordenar Materiales' })}
+        onDismiss={closeSortModal} visible={sortModalVisible} currentSort={currentSort} onSortChange={handleSortChange}
       />
       <FAB 
         style={styles.fab}

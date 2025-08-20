@@ -33,7 +33,8 @@
         "theme_help": "Select the theme for the app.",
         "dark": "Dark",
         "light": "Light",
-        "system": "System Default"
+        "system": "System Default",
+        "language_note": "Texts update immediately. You can change it anytime."
     },
     "language": {
         "en": "English",
@@ -46,6 +47,13 @@
     },
     "labels": {
         "date_added": "Date Added",
-        "low_stock": "Low Stock"
+        "low_stock": "Low Stock",
+        "items": "items"
+    },
+    "sort": {
+        "title": "Sort by",
+        "materials_title": "Sort materials",
+        "asc": "↑",
+        "desc": "↓"
     }
 }

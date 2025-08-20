@@ -33,7 +33,8 @@
         "theme_help": "Selecciona el tema de la aplicación.",
         "dark": "Oscuro",
         "light": "Claro",
-        "system": "Predeterminado del sistema"
+        "system": "Predeterminado del sistema",
+        "language_note": "Los textos cambian inmediatamente. Puedes ajustarlo cuando quieras."
     },
     "language": {
         "en": "Inglés",
@@ -46,6 +47,13 @@
     },
     "labels": {
         "date_added": "Fecha de ingreso",
-        "low_stock": "Pocas existencias"
+        "low_stock": "Pocas existencias",
+        "items": "elementos"
+    },
+    "sort": {
+        "title": "Ordenar por",
+        "materials_title": "Ordenar materiales",
+        "asc": "↑",
+        "desc": "↓"
     }
 }
