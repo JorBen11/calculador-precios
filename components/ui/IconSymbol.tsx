@@ -31,6 +31,7 @@ const MAPPING = {
   'dollarsign': 'attach-money',
   'arrow.up': 'arrow-upward',
   'arrow.down': 'arrow-downward',
+  'nosign': 'not-interested',
 } as IconMapping;
 
 /**

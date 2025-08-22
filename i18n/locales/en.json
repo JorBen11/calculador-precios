@@ -24,7 +24,11 @@
         "add_title": "Add Material",
         "update_title": "Update {{name}}",
         "saved_success": "Material saved successfully",
-        "save_error": "An error occurred while saving the material"
+        "save_error": "An error occurred while saving the material",
+        "no_materials": "No materials available"
+    },
+    "product": {
+        "no_products": "No products available"
     },
     "settings": {
         "theme": "Theme",
@@ -48,11 +52,14 @@
     "labels": {
         "date_added": "Date Added",
         "low_stock": "Low Stock",
-        "items": "items"
+        "items_one": "{{count}} item",
+        "items_other": "{{count}} items",
+        "empty": "No items available"
     },
     "sort": {
         "title": "Sort by",
         "materials_title": "Sort materials",
+        "products_title": "Sort products",
         "asc": "↑",
         "desc": "↓"
     }

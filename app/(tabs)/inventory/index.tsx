@@ -1,4 +1,6 @@
+import { container, fab } from '@/assets/styles/globalStyle';
 import AppHeader from '@/components/AppHeader';
+import EmptyComponent from '@/components/EmptyComponent';
 import SortComponent from '@/components/SortComponent';
 import SortIndicator from '@/components/SortIndicator';
 import { useSorting } from '@/hooks/useSorting';
@@ -57,20 +59,21 @@ const InventoryScreen = () => {
   const {openSortModal, closeSortModal, sortedData: sortedMaterials, currentSort, sortModalVisible, handleSortChange} = useSorting<Material>(materials, sortConfig);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <AppHeader title={t('menu.inventory')} leftButton={<></>}/>
+    <SafeAreaView style={container}>
+      <AppHeader title={t('menu.inventory')} leftButton={<></>} rightButton={<IconButton icon="magnify"/>}/>
       <SortIndicator currentSort={currentSort} itemCount={materials.length} openSortModal={openSortModal}/>
       <FlatList 
         data={sortedMaterials}
         keyExtractor={(item) => item.id}
         renderItem={item => CardMaterial({item: item.item, router, t})}
+        ListEmptyComponent={<EmptyComponent label='material.no_materials'/>}
       />
       <SortComponent
         config={sortConfig} title={t('sort.materials_title', { defaultValue: 'Ordenar Materiales' })}
         onDismiss={closeSortModal} visible={sortModalVisible} currentSort={currentSort} onSortChange={handleSortChange}
       />
       <FAB 
-        style={styles.fab}
+        style={fab}
         onPress={() => router.push('/(tabs)/inventory/MaterialForm')}
         icon="plus"
       />
@@ -79,20 +82,10 @@ const InventoryScreen = () => {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
   card: {
     marginTop: 10,
     marginHorizontal: 10
   },
-  fab: {
-    position: 'absolute',
-    margin: 16,
-    right: 0,
-    bottom: 0,
-    borderRadius: 50
-  }
 });
 
 export default InventoryScreen;

@@ -24,7 +24,11 @@
         "add_title": "Agrega un material",
         "update_title": "Actualiza {{name}}",
         "saved_success": "Material guardado correctamente",
-        "save_error": "Ocurrió un error al guardar el material"
+        "save_error": "Ocurrió un error al guardar el material",
+        "no_materials": "No hay materiales disponibles"
+    },
+    "product": {
+        "no_products": "No hay productos disponibles"
     },
     "settings": {
         "theme": "Tema",
@@ -48,11 +52,14 @@
     "labels": {
         "date_added": "Fecha de ingreso",
         "low_stock": "Pocas existencias",
-        "items": "elementos"
+        "items_one": "{{count}} elemento",
+        "items_other": "{{count}} elementos",
+        "empty": "No hay elementos disponibles"
     },
     "sort": {
         "title": "Ordenar por",
         "materials_title": "Ordenar materiales",
+        "products_title": "Ordenar productos",
         "asc": "↑",
         "desc": "↓"
     }

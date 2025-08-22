@@ -15,9 +15,9 @@ function SortIndicator<T>({itemCount, style, currentSort, openSortModal}: SortIn
             >
                 {`${currentSort?.label} ${t(`sort.${currentSort?.order}`, { defaultValue: currentSort?.order === 'asc' ? '↑' : '↓' })}`}
             </Chip>
-            {itemCount && (
+            {itemCount !== undefined && (
                 <Text variant="labelSmall">
-                    {itemCount} {t('labels.items', { defaultValue: 'elementos' })}
+                    {t('labels.items', { count: itemCount })}
                 </Text>
             )}
         </View>
