@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
 import { IconSymbol, IconSymbolName } from "./ui/IconSymbol";
 
 interface TabIconProps {
@@ -10,8 +12,18 @@ interface TabIconProps {
 
 const TabIcon = ({ name, color, focused, label }: TabIconProps) => {
 
+  const progress = useSharedValue(focused ? 1 : 0);
+
+  useEffect(() => {
+    progress.value = withTiming(focused ? 1 : 0, { duration: 300 });
+  }, [focused, progress]);
+  
+  const animatedStyle =  useAnimatedStyle(() => ({
+    //backgroundColor: interpolateColor(progress.value, [0, 1], ['transparent', '#E0E7FF']),
+  }), [focused]);
+
   return (
-    <View style={[styles.container, { backgroundColor: focused ? color+'15' : 'transparent'}]}>
+    <Animated.View style={[styles.container, animatedStyle]}>
       <View style={[styles.iconContainer, { paddingHorizontal: focused ? 0 : 8 }]}>
         <IconSymbol name={name} size={focused ? 24 : 18} color={color}/>
       </View>
@@ -21,7 +33,7 @@ const TabIcon = ({ name, color, focused, label }: TabIconProps) => {
       >
         {label}
       </Text>
-    </View>
+    </Animated.View>
   );
 }
 

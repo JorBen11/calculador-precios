@@ -7,16 +7,27 @@ import 'react-native-reanimated';
 import Toast from 'react-native-toast-message';
 
 import { useThemeMode } from '@/hooks/useThemeMode';
+import { useSettingsStore } from '@/store/settingsStore';
 import { darkTheme, lightTheme } from '@/theme/theme';
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { StatusBar } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 void i18n;
 
 export default function RootLayout() {
   const {isDark} = useThemeMode();
+  const {language} = useSettingsStore();
+  const {i18n} = useTranslation();
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
   });
+
+  useEffect(() => {
+    if (language) {
+      i18n.changeLanguage(language);
+    }
+  }, []);
 
   if (!loaded) {
     // Async font loading only occurs in development.

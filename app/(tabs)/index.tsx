@@ -15,7 +15,7 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Card style={styles.card}>
+      <Card mode="outlined" style={styles.card}>
         <Card.Title title="Resumen" />
         <Card.Content>
           <Text>Materiales: {materials.length}</Text>

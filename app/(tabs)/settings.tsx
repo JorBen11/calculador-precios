@@ -23,7 +23,7 @@ export default function SettingsScreen() {
             <AppHeader title={t('menu.settings')} leftButton={<></>}/>
             <List.Section>
                 <List.Subheader style={styles.sectionTitle}>{t('settings.theme')}</List.Subheader>
-                <Card style={styles.cardContainer}>
+                <Card mode="outlined" style={styles.cardContainer}>
                     <RadioButton.Group onValueChange={handleThemeChange} value={themePref}>
                         <List.Item title={t('settings.light')} left={() => <RadioButton value="light" />} />
                         <List.Item title={t('settings.dark')} left={() => <RadioButton value="dark" />} />
@@ -32,7 +32,7 @@ export default function SettingsScreen() {
             </List.Section>
             <List.Section>
                 <List.Subheader style={styles.sectionTitle}>{t('settings.language')}</List.Subheader>
-                <Card style={styles.cardContainer}>
+                <Card mode="outlined" style={styles.cardContainer}>
                     <RadioButton.Group onValueChange={handleLanguageChange} value={language}>
                     <List.Item
                         title={t('language.es')}

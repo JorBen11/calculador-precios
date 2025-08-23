@@ -17,14 +17,14 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 const CardMaterial = ({ item, router, t }: { item: Material, router: Router, t: TFunction }) => {
   return (
-    <Card style={styles.card}>
+    <Card mode="outlined" style={styles.card}>
       <Card.Title 
         title={item.name}
-        subtitle={`${item.quantity} ${item.unit} - $${item.purchasePrice}`} 
+        subtitle={`${item.quantity * item.purchaseQuantity} ${item.unit} - $${item.purchasePrice}`} 
         right={() => (
           <Card.Actions>
             <IconButton 
-              icon="pencil" 
+              icon="pencil"
               onPress={() => {
                 useMaterialStore.setState({ selectedMaterial: item });
                 router.navigate('/inventory/MaterialForm');
